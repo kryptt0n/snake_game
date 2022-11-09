@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Класс змея
  */
 public class Snake {
+    public static String snakeHeadImgDir;
     // Направление движения змеи
     private SnakeDirection direction;
     // Состояние - жива змея или нет.
@@ -49,13 +50,13 @@ public class Snake {
         if (!isAlive) return;
 
         if (direction == SnakeDirection.UP)
-            move(0, -1);
+            move(0, -2);
         else if (direction == SnakeDirection.RIGHT)
-            move(1, 0);
+            move(2, 0);
         else if (direction == SnakeDirection.DOWN)
-            move(0, 1);
+            move(0, 2);
         else if (direction == SnakeDirection.LEFT)
-            move(-1, 0);
+            move(-2, 0);
     }
 
     /**
@@ -103,6 +104,23 @@ public class Snake {
     private void checkBody(SnakeSection head) {
         if (sections.contains(head)) {
             isAlive = false;
+        }
+    }
+
+    public void changeSnakeHeadDir() {
+        switch (direction) {
+            case UP:
+                snakeHeadImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeHead\\snakeup.png";
+                break;
+            case DOWN:
+                snakeHeadImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeHead\\snakedown.png";
+                break;
+            case LEFT:
+                snakeHeadImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeHead\\snakeleft.png";
+                break;
+            case RIGHT:
+                snakeHeadImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeHead\\snakeright.png";
+                break;
         }
     }
 }

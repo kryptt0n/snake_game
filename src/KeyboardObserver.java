@@ -10,34 +10,21 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class KeyboardObserver extends Thread {
     private Queue<KeyEvent> keyEvents = new ArrayBlockingQueue<KeyEvent>(100);
 
-    private JFrame frame;
+    static JFrame frame;
 
     @Override
     public void run() {
         frame = new JFrame("KeyPress Tester");
-        frame.setTitle("Transparent JFrame Demo");
+        frame.setTitle("Snake game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setUndecorated(true);
-        frame.setSize(400, 400);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(false);
+        frame.setBounds(800, 400, Room.game.getWidth() * 10 + 17, Room.game.getHeight() * 10 + 40);
+//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new GridBagLayout());
 
-        frame.setOpacity(0.0f);
-        frame.setVisible(true);
-
-        frame.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                //do nothing
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                System.exit(0);
-            }
-        });
-
+//        frame.setOpacity(0.0f);
+//        frame.setVisible(true);
 
         frame.addKeyListener(new KeyListener() {
 
