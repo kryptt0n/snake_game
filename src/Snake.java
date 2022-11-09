@@ -5,12 +5,15 @@ import java.util.ArrayList;
  */
 public class Snake {
     public static String snakeHeadImgDir;
+    public static String snakeTailImgDir;
+    public static String snakeBodyImgDir;
     // Направление движения змеи
     private SnakeDirection direction;
     // Состояние - жива змея или нет.
     private boolean isAlive;
     // Список кусочков змеи.
     private ArrayList<SnakeSection> sections;
+
 
     public Snake(int x, int y) {
         sections = new ArrayList<SnakeSection>();
@@ -120,6 +123,40 @@ public class Snake {
                 break;
             case RIGHT:
                 snakeHeadImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeHead\\snakeright.png";
+                break;
+        }
+    }
+
+    public void changeSnakeBodyDir() {
+        switch (direction) {
+            case UP:
+                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyup.png";
+                break;
+            case DOWN:
+                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodydown.png";
+                break;
+            case LEFT:
+                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyleft.png";
+                break;
+            case RIGHT:
+                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyright.png";
+                break;
+        }
+    }
+
+    public void changeSnakeTailDir() {
+        switch (direction) {
+            case UP:
+                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailup.png";
+                break;
+            case DOWN:
+                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\taildown.png";
+                break;
+            case LEFT:
+                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailleft.png";
+                break;
+            case RIGHT:
+                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailright.png";
                 break;
         }
     }

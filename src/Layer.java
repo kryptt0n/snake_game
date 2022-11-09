@@ -18,18 +18,28 @@ public class Layer extends JPanel {
 
         ArrayList<SnakeSection> getsection = Room.game.getSnake().getSections(); //Получаем секции змейки
 
-        BufferedImage image = null;
+        BufferedImage snakeHeadImage = null;
+        BufferedImage snakeBodyImage = null;
+        BufferedImage snakeTailImage = null;
         try {
-            image = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeHeadImgDir)), 30, 30);
+//            snakeHeadImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeHeadImgDir)), 30, 30);
+//            snakeBodyImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeBodyImgDir)), 30, 30);
+//            snakeTailImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeTailImgDir)), 30, 30);
+            snakeHeadImage = ImageIO.read(new File(Snake.snakeHeadImgDir));
+            snakeBodyImage = ImageIO.read(new File(Snake.snakeBodyImgDir));
+            snakeTailImage = ImageIO.read(new File(Snake.snakeTailImgDir));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         for (int i = 0; i < getsection.size(); i++) {
             if (i== 0) {
-                g.drawImage(image, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
+                g.drawImage(snakeHeadImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
+            } else if (i == getsection.size() - 1){
+                g.drawImage(snakeTailImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
+//                g.fillRect(getsection.get(i).getX()*10, getsection.get(i).getY()*10, 30, 30); //Рисуем по очереди секции змейки
             } else {
-                g.fillRect(getsection.get(i).getX()*10, getsection.get(i).getY()*10, 30, 30); //Рисуем по очереди секции змейки
+                g.drawImage(snakeBodyImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
             }
         }
     }

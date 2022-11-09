@@ -20,11 +20,12 @@ public class KeyboardObserver extends Thread {
 
         frame.setUndecorated(false);
         frame.setBounds(800, 400, Room.game.getWidth() * 10 + 17, Room.game.getHeight() * 10 + 40);
-//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new GridBagLayout());
+        JRootPane bg = frame.getRootPane();
+        bg.setBackground(Color.pink);
 
-//        frame.setOpacity(0.0f);
-//        frame.setVisible(true);
+        frame.setBackground(Color.PINK);
+
 
         frame.addKeyListener(new KeyListener() {
 

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -79,6 +80,8 @@ public class Room {
                 else if (event.getKeyCode() == KeyEvent.VK_DOWN)
                     snake.setDirection(SnakeDirection.DOWN);
                 snake.changeSnakeHeadDir();
+                snake.changeSnakeBodyDir();
+                snake.changeSnakeTailDir();
             }
 
             snake.move();   //двигаем змею
@@ -111,8 +114,8 @@ public class Room {
      * Создает новую мышь
      */
     public void createMouse() {
-        int x = (int) (Math.random() * width);
-        int y = (int) (Math.random() * height);
+        int x = (int) (Math.random() * (width - 1));
+        int y = (int) (Math.random() * (height - 1));
 
         mouse = new Mouse(x, y);
     }
@@ -124,6 +127,8 @@ public class Room {
         game = new Room(40, 40, new Snake(10, 10));
         game.snake.setDirection(SnakeDirection.DOWN);
         game.snake.changeSnakeHeadDir();//i am snake shhh...
+        game.snake.changeSnakeBodyDir();
+        game.snake.changeSnakeTailDir();
         game.createMouse();
         game.run();
     }
