@@ -80,8 +80,6 @@ public class Room {
                 else if (event.getKeyCode() == KeyEvent.VK_DOWN)
                     snake.setDirection(SnakeDirection.DOWN);
                 snake.changeSnakeHeadDir();
-                snake.changeSnakeBodyDir();
-                snake.changeSnakeTailDir();
             }
 
             snake.move();   //двигаем змею
@@ -127,8 +125,6 @@ public class Room {
         game = new Room(40, 40, new Snake(10, 10));
         game.snake.setDirection(SnakeDirection.DOWN);
         game.snake.changeSnakeHeadDir();//i am snake shhh...
-        game.snake.changeSnakeBodyDir();
-        game.snake.changeSnakeTailDir();
         game.createMouse();
         game.run();
     }

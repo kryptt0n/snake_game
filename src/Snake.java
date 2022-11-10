@@ -70,7 +70,7 @@ public class Snake {
         // Создаем новую голову - новый "кусочек змеи".
         SnakeSection head = sections.get(0);
         head = new SnakeSection(head.getX() + dx, head.getY() + dy);
-
+        head.setDirection(direction);
         // Проверяем - не вылезла ли голова за границу комнаты
         checkBorders(head);
         if (!isAlive) return;
@@ -127,37 +127,37 @@ public class Snake {
         }
     }
 
-    public void changeSnakeBodyDir() {
-        switch (direction) {
-            case UP:
-                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyup.png";
-                break;
-            case DOWN:
-                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodydown.png";
-                break;
-            case LEFT:
-                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyleft.png";
-                break;
-            case RIGHT:
-                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyright.png";
-                break;
-        }
-    }
-
-    public void changeSnakeTailDir() {
-        switch (direction) {
-            case UP:
-                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailup.png";
-                break;
-            case DOWN:
-                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\taildown.png";
-                break;
-            case LEFT:
-                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailleft.png";
-                break;
-            case RIGHT:
-                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailright.png";
-                break;
-        }
-    }
+//    public void changeSnakeBodyDir() {
+//        switch (direction) {
+//            case UP:
+//                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyup.png";
+//                break;
+//            case DOWN:
+//                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodydown.png";
+//                break;
+//            case LEFT:
+//                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyleft.png";
+//                break;
+//            case RIGHT:
+//                snakeBodyImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeBody\\bodyright.png";
+//                break;
+//        }
+//    }
+//
+//    public void changeSnakeTailDir() {
+//        switch (direction) {
+//            case UP:
+//                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailup.png";
+//                break;
+//            case DOWN:
+//                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\taildown.png";
+//                break;
+//            case LEFT:
+//                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailleft.png";
+//                break;
+//            case RIGHT:
+//                snakeTailImgDir = "E:\\Java Projects\\GameSnake\\SnakeGame\\images\\snakeTail\\tailright.png";
+//                break;
+//        }
+//    }
 }

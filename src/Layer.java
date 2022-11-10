@@ -14,34 +14,34 @@ public class Layer extends JPanel {
         g.fillRect(Room.game.getWidth() * 10, 0, 10, (Room.game.getWidth() * 10) + 10);  //Рисуем прямоугольник показывающий край поля справа
         g.fillRect(0, Room.game.getHeight() * 10, (Room.game.getHeight() * 10) + 10, 10); //Рисуем прямоугольник показывающий край поля снизу
 
-        g.fillRect(Room.game.getMouse().getX()*10, Room.game.getMouse().getY()*10, 30, 30); //Рисуем прямоугольник показывающий мышь
-
         ArrayList<SnakeSection> getsection = Room.game.getSnake().getSections(); //Получаем секции змейки
 
-        BufferedImage snakeHeadImage = null;
-        BufferedImage snakeBodyImage = null;
-        BufferedImage snakeTailImage = null;
+
+        BufferedImage mouseImage;
         try {
-//            snakeHeadImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeHeadImgDir)), 30, 30);
-//            snakeBodyImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeBodyImgDir)), 30, 30);
-//            snakeTailImage = ImageWorker.resizeImage(ImageIO.read(new File(Snake.snakeTailImgDir)), 30, 30);
-            snakeHeadImage = ImageIO.read(new File(Snake.snakeHeadImgDir));
-            snakeBodyImage = ImageIO.read(new File(Snake.snakeBodyImgDir));
-            snakeTailImage = ImageIO.read(new File(Snake.snakeTailImgDir));
+            mouseImage = ImageIO.read(new File(Mouse.mouseImgDir));
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        g.drawImage(mouseImage, Room.game.getMouse().getX()*10, Room.game.getMouse().getY()*10, null );
+
+        for (int i = getsection.size() - 1; i > 0; i--) {
+            getsection.get(i).setDirection(getsection.get(i - 1).getDirection());
         }
 
         for (int i = 0; i < getsection.size(); i++) {
             if (i== 0) {
+                BufferedImage snakeHeadImage = SnakeSection.getHeadImage(getsection.get(i).getDirection());
                 g.drawImage(snakeHeadImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
             } else if (i == getsection.size() - 1){
+                BufferedImage snakeTailImage = SnakeSection.getTailImage(getsection.get(i).getDirection());;
                 g.drawImage(snakeTailImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
-//                g.fillRect(getsection.get(i).getX()*10, getsection.get(i).getY()*10, 30, 30); //Рисуем по очереди секции змейки
             } else {
+                BufferedImage snakeBodyImage = SnakeSection.getBodyImage(getsection.get(i).getDirection());;
                 g.drawImage(snakeBodyImage, getsection.get(i).getX() * 10, getsection.get(i).getY() * 10, null );
             }
         }
+
     }
 
 }

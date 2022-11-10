@@ -26,7 +26,6 @@ public class KeyboardObserver extends Thread {
 
         frame.setBackground(Color.PINK);
 
-
         frame.addKeyListener(new KeyListener() {
 
             public void keyTyped(KeyEvent e) {
